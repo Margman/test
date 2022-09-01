@@ -214,31 +214,9 @@ if _G.DefaultSettings == true then
     _G.ModeSkipKey = Enum.KeyCode.E
     _G.DisableKey = Enum.KeyCode.Q
 end
-
-local Success, Errored = pcall(function()
+pcall(function()
     CreateTracers()
 end)
-
-if Success and not Errored then
-    if _G.SendNotifications == true then
-        game:GetService("StarterGui"):SetCore("SendNotification",{
-            Title = "Exunys Developer";
-            Text = "Tracer script has successfully loaded.";
-            Duration = 5;
-        })
-    end
-elseif Errored and not Success then
-    if _G.SendNotifications == true then
-        game:GetService("StarterGui"):SetCore("SendNotification",{
-            Title = "Exunys Developer";
-            Text = "Tracer script has errored while loading, please check the developer console! (F9)";
-            Duration = 5;
-        })
-    end
-    TestService:Message("The tracer script has errored, please notify Exunys with the following information :")
-    warn(Errored)
-    print("!! IF THE ERROR IS A FALSE POSITIVE (says that a player cannot be found) THEN DO NOT BOTHER !!")
-end
 
 local tablefind = table.find
 local SpoofTable = {
