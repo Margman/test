@@ -1,30 +1,8 @@
-local function API_Check()
-    if Drawing == nil then
-        return "No"
-    else
-        return "Yes"
-    end
-end
-
-local Find_Required = API_Check()
-
-if Find_Required == "No" then
-    game:GetService("StarterGui"):SetCore("SendNotification",{
-        Title = "Exunys Developer";
-        Text = "Tracer script could not be loaded because your exploit is unsupported.";
-        Duration = math.huge;
-        Button1 = "OK"
-    })
-
-    return
-end
-
 local RunService = game:GetService("RunService")
 local Players = game:GetService("Players")
 local Camera = game:GetService("Workspace").CurrentCamera
 local UserInputService = game:GetService("UserInputService")
 local TestService = game:GetService("TestService")
-
 local Typing = false
 
 _G.SendNotifications = false   -- If set to true then the script would notify you frequently on any changes applied and when loaded / errored. (If a game can detect this, it is recommended to set it to false)
@@ -201,19 +179,6 @@ UserInputService.InputBegan:Connect(function(Input)
         end
     end
 end)
-
-if _G.DefaultSettings == true then
-    _G.TeamCheck = false
-    _G.FromMouse = false
-    _G.FromCenter = false
-    _G.FromBottom = true
-    _G.TracersVisible = true
-    _G.TracerColor = Color3.fromRGB(40, 90, 255)
-    _G.TracerThickness = 1
-    _G.TracerTransparency = 0.5
-    _G.ModeSkipKey = Enum.KeyCode.E
-    _G.DisableKey = Enum.KeyCode.Q
-end
 pcall(function()
     CreateTracers()
 end)
